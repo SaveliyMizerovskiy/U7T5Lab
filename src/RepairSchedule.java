@@ -6,6 +6,8 @@ public class RepairSchedule
     private ArrayList<CarRepair> schedule;
 
     /** Number of mechanics available in this schedule. */
+    //(a)  Write the constructor, in which you initialize the instance variables:
+    // numberOfMechanics should be set to n and schedule should be set an empty ArrayList.
     private int numberOfMechanics;
 
     /** Constructs a RepairSchedule object.
@@ -14,6 +16,8 @@ public class RepairSchedule
     public RepairSchedule(int n)
     {
         /* to be implemented in part (a) */
+        schedule = new ArrayList<>();
+        numberOfMechanics = n;
 
     }
 
@@ -28,6 +32,22 @@ public class RepairSchedule
     public boolean addRepair(int m, int b)
     {
         /* to be implemented in part (b) */
+        boolean mechFound = false;
+        boolean bayFound = false;
+        for (CarRepair ap : schedule){
+            if (ap.getBayNum() == b){
+                bayFound = true;
+                return false;
+            }
+            if (ap.getMechanicNum() == m){
+                mechFound = true;
+                return false;
+            }
+        }
+        if (!mechFound && !bayFound){
+            schedule.add(new CarRepair(m, b));
+            return true;
+        }
 
         return false; // STUB VALUE
     }
