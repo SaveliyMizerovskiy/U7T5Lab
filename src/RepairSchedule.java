@@ -58,8 +58,22 @@ public class RepairSchedule
     public ArrayList<Integer> availableMechanics()
     {
         /* to be implemented in part (c) */
+        int num = numberOfMechanics;
+        ArrayList<Integer> returnList = new ArrayList<Integer>();
+        for (int i = 1; i <= num; i++) {
+            int count = 0;
+            for (CarRepair mech: schedule){
+                if (mech.getMechanicNum() == i){
+                    count++;
+                }
+            }
+            if (count == 0){
+                returnList.add(i);
+            }
 
-        return null; // STUB VALUE
+        }
+
+        return returnList; // STUB VALUE
     }
 
     /** Removes an element from schedule when a repair is complete. */
